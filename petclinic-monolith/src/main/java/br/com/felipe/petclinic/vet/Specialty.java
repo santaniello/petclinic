@@ -15,11 +15,13 @@
  */
 package br.com.felipe.petclinic.vet;
 
-public enum Specialty  {
-    CANINE,
-    FELINE,
-    EQUINE,
-    AVIAN,
-    REPTILE,
-    AMPHIBIAN;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class Specialty  {
+    private String name;
 }

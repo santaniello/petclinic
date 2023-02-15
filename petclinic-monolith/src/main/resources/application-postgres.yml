@@ -1,0 +1,10 @@
+database: postgres
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost/petclinic}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASS:postgres}

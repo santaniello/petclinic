@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.felipe.petclinic.vet;
+package br.com.felipe.petclinic.vet.entity;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.felipe.petclinic.common.entity.AbstractEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
-@RestController
-final class VetController {
-
-
-
+@Getter
+@Setter
+@Entity
+@Table(name = "specialties")
+public class SpecialtyEntity extends AbstractEntity {
+    @Column(name = "name")
+    private String name;
 }

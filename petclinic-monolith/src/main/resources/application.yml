@@ -1,0 +1,15 @@
+database: postgres
+spring:
+  sql:
+    init:
+      schema-locations: classpath*:db/${database}/schema.sql
+      data-locations: classpath*:db/${database}/data.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+
+logging:
+  level:
+    org.springframework: info
+
