@@ -20,17 +20,15 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
-
-public interface VetRepository extends Repository<VetEntity, Integer> {
-	@Transactional(readOnly = true)
-	@Cacheable("vets")
-	Stream<Vet> findAll() throws DataAccessException;
-
+@Repository
+public interface VetRepository extends CrudRepository<VetEntity, Integer> {
 	@Transactional(readOnly = true)
 	@Cacheable("vets")
 	Page<Vet> findAll(Pageable pageable) throws DataAccessException;

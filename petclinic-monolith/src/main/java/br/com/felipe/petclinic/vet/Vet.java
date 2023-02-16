@@ -1,6 +1,6 @@
 package br.com.felipe.petclinic.vet;
 
-import br.com.felipe.petclinic.common.Person;
+import br.com.felipe.petclinic.common.model.Person;
 
 import java.util.Set;
 

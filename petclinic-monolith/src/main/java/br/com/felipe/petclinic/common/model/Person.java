@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.felipe.petclinic.common;
+package br.com.felipe.petclinic.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,17 +1,12 @@
 package br.com.felipe.petclinic.vet.entity;
 
-import br.com.felipe.petclinic.common.Person;
 import br.com.felipe.petclinic.common.entity.PersonEntity;
-import br.com.felipe.petclinic.vet.Specialty;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
-
-import static java.util.Collections.unmodifiableSet;
 
 @Getter
 @Setter

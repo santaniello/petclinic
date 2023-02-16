@@ -15,21 +15,27 @@
  */
 package br.com.felipe.petclinic.vet;
 
+import br.com.felipe.petclinic.vet.dto.VetDTO;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 final class VetController {
-
-
+    private VetService service;
+    @PostMapping("/test")
+    public void test(@RequestBody  VetDTO dto){
+        System.out.printf("teste");
+        service.create(dto);
+    }
 
 }
