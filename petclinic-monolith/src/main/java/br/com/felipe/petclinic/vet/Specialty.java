@@ -15,6 +15,7 @@
  */
 package br.com.felipe.petclinic.vet;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,6 +23,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Specialty  {
+    private int id;
     private String name;
 }

@@ -10,6 +10,11 @@ public final class Vet extends Person {
     private int document;
     private Set<Specialty> specialties;
 
+    public Vet(String firstName, String lastName, int document) {
+        super(firstName, lastName);
+        this.document = document;
+    }
+
     public Vet(String firstName, String lastName, Set<Specialty> specialties) {
         super(firstName, lastName);
         this.specialties = specialties;

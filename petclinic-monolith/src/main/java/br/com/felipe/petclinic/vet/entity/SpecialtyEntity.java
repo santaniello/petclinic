@@ -16,11 +16,12 @@
 package br.com.felipe.petclinic.vet.entity;
 
 import br.com.felipe.petclinic.common.entity.AbstractEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,4 +30,9 @@ import lombok.Setter;
 public class SpecialtyEntity extends AbstractEntity {
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(mappedBy = "specialties")
+    private Set<VetEntity> vets = new HashSet<>();
+
+
 }
