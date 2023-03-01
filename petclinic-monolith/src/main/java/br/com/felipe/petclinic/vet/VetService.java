@@ -18,7 +18,6 @@ public class VetService {
     public VetResponseDTO create(VetRequestDTO dto){
         VetEntity vetEntity = mapper.map(dto, VetEntity.class);
         VetEntity vetEntitySaved = repository.save(vetEntity);
-
         return mapper.map(vetEntitySaved, VetResponseDTO.class);
     }
 }

@@ -6,6 +6,8 @@ import br.com.felipe.petclinic.vet.entity.SpecialtyEntity;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +24,9 @@ public class SpecialtyService {
         return mapper.map(entitySaved, SpecialtyDTO.class);
     }
 
-    public Page<SpecialtyEntity> findAll(){
-        return repository.findAll();
+    public Page<SpecialtyEntity> findAll(int page){
+        int pageSize = 5;
+        Pageable pageable = PageRequest.of(page - 1, pageSize);
+        return repository.findAll(pageable);
     }
 }

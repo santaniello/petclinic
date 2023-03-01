@@ -16,20 +16,23 @@
 package br.com.felipe.petclinic.vet;
 import br.com.felipe.petclinic.vet.dto.SpecialtyDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtySaveRequestDTO;
+import br.com.felipe.petclinic.vet.entity.SpecialtyEntity;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/specialties")
 final class SpecialtyController {
     private SpecialtyService service;
-
     @PostMapping
     public SpecialtyDTO save(@RequestBody SpecialtySaveRequestDTO dto){
         return service.create(dto);
+    }
+
+    @GetMapping
+    public Page<SpecialtyEntity> findAll(@RequestParam(defaultValue = "1") int page){
+        return service.findAll(page);
     }
 }

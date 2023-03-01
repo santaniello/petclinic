@@ -33,9 +33,6 @@ public class SpecialtyEntity extends AbstractEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "specialties")
-    private Set<VetEntity> vets = new HashSet<>();
-
     public SpecialtyEntity(String name) {
         this.name = name;
     }
