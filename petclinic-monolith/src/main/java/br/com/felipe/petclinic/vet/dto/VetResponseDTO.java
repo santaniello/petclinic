@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Getter @Setter
 public class VetResponseDTO {
-
     private int id;
     private int document;
     private String firstName;

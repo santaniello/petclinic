@@ -18,6 +18,7 @@ package br.com.felipe.petclinic.vet.entity;
 import br.com.felipe.petclinic.common.entity.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
@@ -26,6 +27,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "specialties")
 public class SpecialtyEntity extends AbstractEntity {
     @Column(name = "name")
@@ -34,5 +36,7 @@ public class SpecialtyEntity extends AbstractEntity {
     @ManyToMany(mappedBy = "specialties")
     private Set<VetEntity> vets = new HashSet<>();
 
-
+    public SpecialtyEntity(String name) {
+        this.name = name;
+    }
 }

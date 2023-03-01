@@ -11,5 +11,5 @@ public class VetRequestDTO {
     private int document;
     private String firstName;
     private String lastName;
-    private Set<SpecialtyDTO> specialties;
+    private Set<SpecialtyRequestDTO> specialties;
 }

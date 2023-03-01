@@ -9,15 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpecialtyDTO {
-    private int id;
+public class SpecialtySaveRequestDTO {
     private String name;
-
-    public SpecialtyDTO(int id) {
-        this.id = id;
-    }
-
-    public SpecialtyDTO(String name) {
-        this.name = name;
-    }
 }
