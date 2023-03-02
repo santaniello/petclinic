@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 package br.com.felipe.petclinic.vet;
+import br.com.felipe.petclinic.common.StandardResponseDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtyDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtySaveRequestDTO;
 import br.com.felipe.petclinic.vet.entity.SpecialtyEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,7 +35,7 @@ final class SpecialtyController {
     }
 
     @GetMapping
-    public Page<SpecialtyEntity> findAll(@RequestParam(defaultValue = "1") int page){
-        return service.findAll(page);
+    public ResponseEntity<StandardResponseDTO<Page<SpecialtyEntity>>> findAll(@RequestParam(defaultValue = "1") int page){
+        return new ResponseEntity<>(new StandardResponseDTO<>(service.findAll(page), "Sucesso"), HttpStatus.OK);
     }
 }

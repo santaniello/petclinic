@@ -15,9 +15,12 @@
  */
 package br.com.felipe.petclinic.vet;
 
+import br.com.felipe.petclinic.common.StandardResponseDTO;
 import br.com.felipe.petclinic.vet.dto.VetRequestDTO;
 import br.com.felipe.petclinic.vet.dto.VetResponseDTO;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,7 +30,7 @@ final class VetController {
     private VetService service;
 
     @PostMapping
-    public VetResponseDTO save(@RequestBody VetRequestDTO dto){
-        return service.create(dto);
+    public ResponseEntity<StandardResponseDTO<VetResponseDTO>> save(@RequestBody VetRequestDTO dto){
+        return new ResponseEntity<>(new StandardResponseDTO<>(service.create(dto), "Sucesso"), HttpStatus.OK);
     }
 }
