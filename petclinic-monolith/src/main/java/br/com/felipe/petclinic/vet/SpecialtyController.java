@@ -36,6 +36,8 @@ final class SpecialtyController {
 
     @GetMapping
     public ResponseEntity<StandardResponseDTO<Page<SpecialtyEntity>>> findAll(@RequestParam(defaultValue = "1") int page){
-        return new ResponseEntity<>(new StandardResponseDTO<>(service.findAll(page), "Sucesso"), HttpStatus.OK);
+        Page<SpecialtyEntity> pageSpecialty = service.findAll(page);
+        StandardResponseDTO response = new StandardResponseDTO<>(pageSpecialty.getContent(), "Sucesso", pageSpecialty.getPageable());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
