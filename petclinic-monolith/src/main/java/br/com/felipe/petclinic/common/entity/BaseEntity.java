@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @MappedSuperclass
-public class AbstractEntity {
+public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

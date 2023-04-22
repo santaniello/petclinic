@@ -1,9 +1,9 @@
-package br.com.felipe.petclinic.vet.entity;
+package br.com.felipe.petclinic.vet.entitydb;
 
 import br.com.felipe.petclinic.common.entity.PersonEntity;
+import br.com.felipe.petclinic.vet.entitydb.SpecialtyEntityDB;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -12,11 +12,11 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "vets")
-public class VetEntity extends PersonEntity {
+public class VetEntityDB extends PersonEntity {
     @Column(name = "document", unique = true)
     private int document;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
-    private Set<SpecialtyEntity> specialties;
+    private Set<SpecialtyEntityDB> specialties;
 }

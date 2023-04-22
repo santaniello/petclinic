@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 package br.com.felipe.petclinic.vet;
-
-import br.com.felipe.petclinic.vet.entity.VetEntity;
+import br.com.felipe.petclinic.vet.entitydb.VetEntityDB;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
@@ -24,12 +23,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Stream;
 @Repository
-public interface VetRepository extends CrudRepository<VetEntity, Integer> {
+public interface VetRepository extends CrudRepository<VetEntityDB, Integer> {
 	@Transactional(readOnly = true)
 	@Cacheable("vets")
-	Page<Vet> findAll(Pageable pageable) throws DataAccessException;
+	Page<VetEntityDB> findAll(Pageable pageable) throws DataAccessException;
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @MappedSuperclass
-public class PersonEntity extends AbstractEntity{
+public class PersonEntity extends BaseEntity{
     @Column(name = "first_name")
     @NotEmpty
     private String firstName;

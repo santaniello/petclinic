@@ -17,7 +17,7 @@ package br.com.felipe.petclinic.vet;
 import br.com.felipe.petclinic.common.StandardResponseDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtyDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtySaveRequestDTO;
-import br.com.felipe.petclinic.vet.entity.SpecialtyEntity;
+import br.com.felipe.petclinic.vet.entitydb.SpecialtyEntityDB;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -35,8 +35,8 @@ final class SpecialtyController {
     }
 
     @GetMapping
-    public ResponseEntity<StandardResponseDTO<Page<SpecialtyEntity>>> findAll(@RequestParam(defaultValue = "1") int page){
-        Page<SpecialtyEntity> pageSpecialty = service.findAll(page);
+    public ResponseEntity<StandardResponseDTO<Page<SpecialtyEntityDB>>> findAll(@RequestParam(defaultValue = "1") int page){
+        Page<SpecialtyEntityDB> pageSpecialty = service.findAll(page);
         StandardResponseDTO response = new StandardResponseDTO<>(pageSpecialty.getContent(), "Sucesso", pageSpecialty.getPageable());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

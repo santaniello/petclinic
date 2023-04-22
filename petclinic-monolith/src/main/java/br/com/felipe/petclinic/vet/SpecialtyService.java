@@ -1,8 +1,7 @@
 package br.com.felipe.petclinic.vet;
-
 import br.com.felipe.petclinic.vet.dto.SpecialtyDTO;
 import br.com.felipe.petclinic.vet.dto.SpecialtySaveRequestDTO;
-import br.com.felipe.petclinic.vet.entity.SpecialtyEntity;
+import br.com.felipe.petclinic.vet.entitydb.SpecialtyEntityDB;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -19,12 +18,12 @@ public class SpecialtyService {
 
     @Transactional
     public SpecialtyDTO create(SpecialtySaveRequestDTO dto){
-        SpecialtyEntity entity = mapper.map(dto, SpecialtyEntity.class);
-        SpecialtyEntity entitySaved = repository.save(entity);
+        SpecialtyEntityDB entity = mapper.map(dto, SpecialtyEntityDB.class);
+        SpecialtyEntityDB entitySaved = repository.save(entity);
         return mapper.map(entitySaved, SpecialtyDTO.class);
     }
 
-    public Page<SpecialtyEntity> findAll(int page){
+    public Page<SpecialtyEntityDB> findAll(int page){
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         return repository.findAll(pageable);

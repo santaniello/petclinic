@@ -13,27 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.felipe.petclinic.vet.entity;
-
-import br.com.felipe.petclinic.common.entity.AbstractEntity;
-import jakarta.persistence.*;
+package br.com.felipe.petclinic.vet.entitydb;
+import br.com.felipe.petclinic.common.entity.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "specialties")
-public class SpecialtyEntity extends AbstractEntity {
+public class SpecialtyEntityDB extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    public SpecialtyEntity(String name) {
+    public SpecialtyEntityDB(String name) {
         this.name = name;
     }
 }
