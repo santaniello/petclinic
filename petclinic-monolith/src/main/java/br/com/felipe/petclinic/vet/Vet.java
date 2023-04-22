@@ -1,26 +1,22 @@
-package br.com.felipe.petclinic.vet;
+package br.com.felipe.petclinic.vet.entity;
 
-import br.com.felipe.petclinic.common.model.Person;
+import br.com.felipe.petclinic.common.entity.PersonEntity;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
-import static java.util.Collections.unmodifiableSet;
-
-public final class Vet extends Person {
+@Getter
+@Setter
+@Entity
+@Table(name = "vets")
+public class VetEntity extends PersonEntity {
+    @Column(name = "document", unique = true)
     private int document;
-    private Set<Specialty> specialties;
-
-    public Vet(String firstName, String lastName, int document) {
-        super(firstName, lastName);
-        this.document = document;
-    }
-
-    public Vet(String firstName, String lastName, Set<Specialty> specialties) {
-        super(firstName, lastName);
-        this.specialties = specialties;
-    }
-
-    public Set<Specialty> getSpecialties() {
-        return unmodifiableSet(specialties);
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialty_id"))
+    private Set<SpecialtyEntity> specialties;
 }
