@@ -15,10 +15,22 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<encoding>UTF-8</encoding>
 		<skip.ut>false</skip.ut>
 		<maven.failsafe.version>3.0.0</maven.failsafe.version>
 		<maven.surefire.version>3.0.0</maven.surefire.version>
+		<!-- SONAR -->
+		<sonar-plugin.version>3.9.1.2184</sonar-plugin.version>
+		<jacoco.version>0.8.9</jacoco.version>
 	</properties>
+	<scm>
+		<connection>scm:git:git@github.com:santaniello/petclinic.git</connection>
+		<developerConnection>scm:git:git@github.com:santaniello/petclinic.git</developerConnection>
+		<url>https://github.com/santaniello/petclinic</url>
+		<tag>@{project.version}</tag>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,6 +80,16 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>${sonar-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>${jacoco.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -111,6 +133,31 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>${sonar-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
