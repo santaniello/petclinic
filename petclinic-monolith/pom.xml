@@ -17,10 +17,10 @@
 		<java.version>17</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<encoding>UTF-8</encoding>
-		<skip.ut>false</skip.ut>
 		<maven.failsafe.version>3.0.0</maven.failsafe.version>
 		<maven.surefire.version>3.0.0</maven.surefire.version>
+		<encoding>UTF-8</encoding>
+		<skip.ut>false</skip.ut>
 		<!-- SONAR -->
 		<sonar-plugin.version>3.9.1.2184</sonar-plugin.version>
 		<jacoco.version>0.8.9</jacoco.version>
@@ -95,12 +95,36 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${encoding}</encoding>
+					<forceJavacCompilerUse>true</forceJavacCompilerUse>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<configuration>
+					<encoding>${encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skipTests>${skip.ut}</skipTests>
 					<excludes>
-						<exclude>**/*IT</exclude>
+						<exclude>**/IT*.java</exclude>
+						<exclude>**/*IT.java</exclude>
 					</excludes>
+					<includes>
+						<include>**/Test*.java</include>
+						<include>**/*Test.java</include>
+					</includes>
 					<excludedGroups>br.com.felipe.petclinic.it.IntegrationTest</excludedGroups>
 				</configuration>
 			</plugin>
