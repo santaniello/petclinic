@@ -2,17 +2,20 @@ package br.com.felipe.petclinic.appointment;
 import br.com.felipe.petclinic.common.entity.BaseEntity;
 import br.com.felipe.petclinic.vet.entitydb.VetEntityDB;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "appointments")
 public class Appointment extends BaseEntity {
 
@@ -39,4 +42,8 @@ public class Appointment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "id_work")
     private Work work;
+
+    public List<Appointment> getAppointmentsWithoutBreaks(){
+        return Collections.emptyList();
+    }
 }

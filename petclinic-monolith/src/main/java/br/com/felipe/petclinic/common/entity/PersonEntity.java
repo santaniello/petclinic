@@ -3,14 +3,15 @@ package br.com.felipe.petclinic.common.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@SuperBuilder(toBuilder = true)
 @MappedSuperclass
+@AllArgsConstructor
+@NoArgsConstructor
 public class PersonEntity extends BaseEntity{
     @Column(name = "first_name")
     @NotEmpty

@@ -4,8 +4,8 @@ import br.com.felipe.petclinic.appointment.Work;
 import br.com.felipe.petclinic.appointment.WorkingPlan;
 import br.com.felipe.petclinic.common.entity.PersonEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 import java.util.Set;
@@ -13,10 +13,15 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "vets")
+@SuperBuilder
 public class VetEntityDB extends PersonEntity {
+
     @Column(name = "document", unique = true)
     private int document;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))

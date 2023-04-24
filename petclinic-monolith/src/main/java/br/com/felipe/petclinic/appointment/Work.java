@@ -2,9 +2,8 @@ package br.com.felipe.petclinic.appointment;
 import br.com.felipe.petclinic.common.entity.BaseEntity;
 import br.com.felipe.petclinic.vet.entitydb.VetEntityDB;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -12,7 +11,9 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "works")
+@SuperBuilder
 public class Work extends BaseEntity {
 
     @Column(name = "name")
