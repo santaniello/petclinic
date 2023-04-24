@@ -1,11 +1,13 @@
 package br.com.felipe.petclinic.vet.entitydb;
-
+import br.com.felipe.petclinic.appointment.Appointment;
+import br.com.felipe.petclinic.appointment.Work;
+import br.com.felipe.petclinic.appointment.WorkingPlan;
 import br.com.felipe.petclinic.common.entity.PersonEntity;
-import br.com.felipe.petclinic.vet.entitydb.SpecialtyEntityDB;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -19,4 +21,14 @@ public class VetEntityDB extends PersonEntity {
     @JoinTable(name = "vet_specialties", joinColumns = @JoinColumn(name = "vet_id"),
             inverseJoinColumns = @JoinColumn(name = "specialty_id"))
     private Set<SpecialtyEntityDB> specialties;
+
+    @OneToMany(mappedBy = "vet")
+    private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "vet")
+    private List<WorkingPlan> workingPlans;
+
+    @ManyToMany
+    @JoinTable(name = "works_vets", joinColumns = @JoinColumn(name = "id_vet"), inverseJoinColumns = @JoinColumn(name = "id_work"))
+    private List<Work> works;
 }

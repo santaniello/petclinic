@@ -24,10 +24,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/specialties")
 final class SpecialtyController {
+    
     private SpecialtyService service;
     @PostMapping
     public SpecialtyDTO save(@RequestBody SpecialtySaveRequestDTO dto){
@@ -35,9 +38,9 @@ final class SpecialtyController {
     }
 
     @GetMapping
-    public ResponseEntity<StandardResponseDTO<Page<SpecialtyEntityDB>>> findAll(@RequestParam(defaultValue = "1") int page){
+    public ResponseEntity<StandardResponseDTO<List<SpecialtyEntityDB>>> findAll(@RequestParam(defaultValue = "1") int page){
         Page<SpecialtyEntityDB> pageSpecialty = service.findAll(page);
-        StandardResponseDTO response = new StandardResponseDTO<>(pageSpecialty.getContent(), "Sucesso", pageSpecialty.getPageable());
+        StandardResponseDTO<List<SpecialtyEntityDB>> response = new StandardResponseDTO<>(pageSpecialty.getContent(), "Sucesso", pageSpecialty.getPageable());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
